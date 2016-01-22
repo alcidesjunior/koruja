@@ -14,9 +14,12 @@
 ActiveRecord::Schema.define(version: 20160121181501) do
 
   create_table "grades", force: :cascade do |t|
+    t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "grades", ["student_id"], name: "index_grades_on_student_id"
 
   create_table "managers", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -24,28 +27,39 @@ ActiveRecord::Schema.define(version: 20160121181501) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "subjects_id"
+    t.integer  "grades_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "students", ["grades_id"], name: "index_students_on_grades_id"
+  add_index "students", ["subjects_id"], name: "index_students_on_subjects_id"
 
   create_table "subjects", force: :cascade do |t|
+    t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "subjects", ["student_id"], name: "index_subjects_on_student_id"
+
   create_table "teachers", force: :cascade do |t|
+    t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "teachers", ["student_id"], name: "index_teachers_on_student_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "login"
     t.string   "name"
     t.string   "last_name"
     t.string   "password"
-    t.integer  "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_type",  default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

@@ -1,0 +1,33 @@
+<%= link_to 'Voltar', '/users'%><br>
+
+<%=form_for :users, url: "/users/create" do |f|%>
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%=f.label 'Login'%>
+<%=f.text_field :login%><br>
+<%=f.label 'Nome'%>
+<%=f.text_field :name%><br>
+<%=f.label 'Sobrenome'%>
+<%=f.text_field :last_name%><br>
+<%=f.label 'Tipo de usuário'%>
+<select name="users[user_type]">
+<option value='0'>Desabilitado</option>
+<option value='1'>Administrador</option>
+<option value='2'>Professor</option>
+<option value='3'>Aluno</option>
+</select><br>
+<%=f.label 'Senha'%>
+<%=f.password_field :password%><br>
+<%=f.submit "Salvar"%>
+<%end%>

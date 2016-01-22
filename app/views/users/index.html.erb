@@ -1,0 +1,27 @@
+<%= link_to 'Novo usuário', 'users/new'%>
+<hr>
+<table border="1" width="100%">
+	<tr>
+		<th>Login</th>
+		<th>Nome</th>
+		<th>Sobrenome</th>
+		<th>Tipo de usuário</th>
+		<th>Opções</th>
+	</tr>
+	<%
+		level = ["Desabilitado","Administrador","Professor","Aluno"]
+	%>
+	<%
+		@users.each do |user|
+	%>
+	<tr>
+		<td><%=user.login%></td>
+		<td><%=user.name%></td>
+		<td><%=user.last_name%></td>
+		<td><%=level[user.user_type]%></td>
+		<td><%=link_to 'Editar', "users/show/#{user.id}"%></td>
+	</tr>
+	<%
+		end
+	%>
+</table>
