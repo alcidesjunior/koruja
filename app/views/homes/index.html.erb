@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bem vindo!</title>
+</head>
+<body>
+<center style="margin-top:8%">
+<%if flash[:message]%>
+<%=flash[:message]%>
+<%end%>
+<%=
+form_for :authentication_log,url: "/login" do |f|
+%>
+<%=radio_button("authentication_log","access_type","1",checked: true)%>ADMINISTRADOR
+<%=radio_button("authentication_log","access_type","2")%>PROFESSOR
+<%=radio_button("authentication_log","access_type","3")%>ALUNO
+<br><%=f.label "Login"%>:
+<%=f.text_field :login%>
+<br>
+<%=f.label "Senha"%>:
+<%=f.password_field :password%>
+<br>
+<%=f.submit "Acessar"%>
+<%
+end
+%>
+</center>
+</body>
+</html>

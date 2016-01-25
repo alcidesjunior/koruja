@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Paradygma</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
-</html>
+<%
+if params[:logout]
+	Rails.cache.clear
+	session.delete(:logged)
+	render template: "homes/index"
+end
+require 'digest'
+#paradygmaeducar##
+if session[:logged] == 'd397ea1e0cc78fc241bb7132693375539d6f9ccaf02eddbe999b272b0e666cb2'
+%>
+	<%=render template: "homes/_horizontal_menu"%>
+	<%=render template: "layouts/system"%>
+<%
+else
+%>
+	<%=render template: "homes/index"%>
+<%
+end
+%>

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   #USERS
   get 'users'=>'users#index'
   get 'users/new'=>'users#new'
+  get 'users/show/:id'=>'users#show'
+  get 'inicio'=>'homes#home'
+
   post 'users/create'=>'users#create'
+  post '/login'=>'users#login'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
