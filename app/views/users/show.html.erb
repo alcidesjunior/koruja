@@ -1,1 +1,32 @@
 <%=link_to "Voltar","/users"%>
+<%=form_for :users, url: "/users/update/#{@user.id}" do |f|%>
+ <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@user.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%=f.label 'Login'%>
+<%=f.text_field :login, value: @user.login%><br>
+<%=f.label 'Nome'%>
+<%=f.text_field :name, value: @user.name%><br>
+<%=f.label 'Sobrenome'%>
+<%=f.text_field :last_name, value: @user.last_name%><br>
+<%=f.label 'Tipo de usuário'%>
+<select name="users[user_type]">
+<option value='0' <%= @user.user_type==0 ? 'selected': ''%>>Desabilitado</option>
+<option value='1' <%= @user.user_type==1 ? 'selected': ''%>>Administrador</option>
+<option value='2' <%= @user.user_type==2 ? 'selected': ''%>>Professor</option>
+<option value='3' <%= @user.user_type==3 ? 'selected': ''%>>Aluno</option>
+</select><br>
+<%=f.label 'Senha'%>
+<%=f.password_field :password%><br>
+<%=f.submit "Salvar"%>
+<%end%>

@@ -1,2 +1,12 @@
-<a href="/inicio">INÍCIO</a> || <a href="/users">USUÁRIOS</a> || <a href="?logout=ok">SAIR</a>
+<%
+inicio = case session[:user_type]
+when 1 
+	"/managers"
+when 2
+	"/teachers"
+when 3 
+	"/students"
+end
+%>
+<a href="<%=inicio%>">Início</a> <%= session[:user_type]==1 ? link_to("Usuários","/users") : ''%> <a href="?logout=ok">Sair</a>
 <br>

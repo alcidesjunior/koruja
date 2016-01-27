@@ -4,10 +4,18 @@ Rails.application.routes.draw do
   get 'users'=>'users#index'
   get 'users/new'=>'users#new'
   get 'users/show/:id'=>'users#show'
-  get 'inicio'=>'homes#home'
-
+  
   post 'users/create'=>'users#create'
   post '/login'=>'users#login'
+  post '/users/update/:id'=>'users#update'
+  #MANAGER
+  get 'managers'=>'managers#index'
+
+  #TEACHER
+  get 'teachers'=>'teachers#index'
+
+  #STUDENT
+  get 'students'=>'students#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
