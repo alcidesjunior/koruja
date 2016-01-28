@@ -97,6 +97,7 @@ hr {
   -webkit-box-sizing: content-box;
      -moz-box-sizing: content-box;
           box-sizing: content-box;
+   color:#b3b3b3;
 }
 pre {
   overflow: auto;

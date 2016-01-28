@@ -3,9 +3,11 @@
 <head>
 	<title>Bem vindo!</title>
 	<link rel="stylesheet" href="/assets/bootstrap.css">
+	<link rel="stylesheet" href="/assets/bootstrap.custom.css">
+	<link rel="stylesheet" href="/assets/sticky-footer.css">
 </head>
 <body>
-<div style="margin-top:8%">
+<div id="form-content">
 	<%if flash[:message]%>
 		<div class="alert alert-danger">
 		<%=flash[:message]%>
@@ -14,14 +16,24 @@
 		<%=
 		form_for :authentication_log,url: "/login" do |f|
 		%>
-	<div class="col-sm-5 col-sm-offset-1" style="border-right:1px solid #000;">
-		<br><%=f.label "Login"%>:
-		<%=f.text_field :login, class: 'form-control'%>
-		<br>
-		<%=f.label "Senha"%>:
-		<%=f.password_field :password,class: 'form-control'%>
-		<br>
-		<%=f.submit "Acessar", class: 'btn'%>
+	<div class="col-sm-5 col-sm-offset-1" id="horizontal-border-form">
+	<div class="row">
+		<div class="col-sm-7 col-sm-offset-3">
+			<%=f.label "Login"%>:
+			<%=f.text_field :login, class: 'form-control',autofocus: ''%>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7 col-sm-offset-3">
+			<%=f.label "Senha"%>:
+			<%=f.password_field :password,class: 'form-control'%>
+		</div>
+	</div><br>
+	<div class="row">
+		<div class="col-sm-5  col-sm-offset-3">
+			<%=f.submit "Acessar", class: 'btn btn-default'%>
+		</div>
+	</div><br>
 		</div>
 		<div class="col-sm-4">
 		<div class="well"><%=radio_button("authentication_log","access_type","1",checked: true)%>ADMINISTRADOR</div>
@@ -31,7 +43,12 @@
 		<%
 		end
 		%>
+</div><br>
+<footer class="footer">
+    <div class="container-fluid"><br>
+       <p class="text-muted">Created by <a href="http://ajatdesenvolvimento.tk" target="_blank">AJAT Desenvolvimento</a></p>
+    </div>
+</footer>
 	
-</div>
 </body>
 </html>
