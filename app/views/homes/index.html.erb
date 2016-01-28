@@ -4,15 +4,21 @@
 	<title>Bem vindo!</title>
 	<link rel="stylesheet" href="/assets/bootstrap.css">
 	<link rel="stylesheet" href="/assets/bootstrap.custom.css">
+	<link rel="stylesheet" href="/assets/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/sticky-footer.css">
 </head>
 <body>
 <div id="form-content">
 	<%if flash[:message]%>
-		<div class="alert alert-danger">
-		<%=flash[:message]%>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="alert alert-danger">
+				<span class="fa fa-exclamation-triangle"></span>
+					<%=flash[:message]%>
+				</div>
+				<%end%>
+			</div>
 		</div>
-		<%end%>
 		<%=
 		form_for :authentication_log,url: "/login" do |f|
 		%>
