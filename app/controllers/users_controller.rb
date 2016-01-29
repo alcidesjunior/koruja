@@ -56,11 +56,11 @@ class UsersController < ApplicationController
 	end
 	def login
 		require 'digest'
-		user_login = params[:authentication_log]['login']
-		password_login = Digest::SHA256.hexdigest params[:authentication_log]['password'].to_s
+		user_email = params[:authentication_log]['email']
+		password_login = Digest::SHA256.hexdigest params[:authentication_log]['password']
 		access_type_login = params[:authentication_log]['access_type'].to_i
 
-		if User.find_by_login_and_password_and_user_type(user_login,password_login,access_type_login)
+		if User.find_by_email_and_password_and_user_type(user_email,password_login,access_type_login)
 			session[:logged] = 'd397ea1e0cc78fc241bb7132693375539d6f9ccaf02eddbe999b272b0e666cb2'
 			session[:user_type] = access_type_login
 			if session[:user_type]==1

@@ -2,7 +2,7 @@
 <hr>
 <table border="1" width="100%">
 	<tr>
-		<th>Login</th>
+		<th>Email</th>
 		<th>Nome</th>
 		<th>Sobrenome</th>
 		<th>Tipo de usuário</th>
@@ -15,7 +15,7 @@
 		@users.each do |user|
 	%>
 	<tr>
-		<td><%=user.login%></td>
+		<td><%=user.email%></td>
 		<td><%=user.name%></td>
 		<td><%=user.last_name%></td>
 		<td><%=level[user.user_type]%></td>

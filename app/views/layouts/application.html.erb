@@ -8,8 +8,11 @@ require 'digest'
 #paradygmaeducar##
 if session[:logged] == 'd397ea1e0cc78fc241bb7132693375539d6f9ccaf02eddbe999b272b0e666cb2'
 %>
-	<%=render template: "homes/_horizontal_menu"%>
 	<%=render template: "layouts/system"%>
+<%
+elsif request.fullpath == "/admin"
+%>
+	<%=render template: "homes/admin"%>
 <%
 else
 %>

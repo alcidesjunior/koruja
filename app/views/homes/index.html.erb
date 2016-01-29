@@ -8,6 +8,9 @@
 	<link rel="stylesheet" href="/assets/sticky-footer.css">
 </head>
 <body>
+<br><br>
+<center><div><%= image_tag(asset_path('logo.png'),size: '130') %></div></center>
+<center><h2 style="font-family: comic">Koruja Educacional</h2><h7>Uma plataforma que liga o aluno a escola.</h7></center>
 <div id="form-content">
 	<%if flash[:message]%>
 		<div class="row">
@@ -16,45 +19,40 @@
 				<span class="fa fa-exclamation-triangle"></span>
 					<%=flash[:message]%>
 				</div>
-				<%end%>
 			</div>
+				<%end%>
 		</div>
 		<%=
 		form_for :authentication_log,url: "/login" do |f|
 		%>
 	<div class="col-sm-5 col-sm-offset-1" id="horizontal-border-form">
 	<div class="row">
-		<div class="col-sm-7 col-sm-offset-3">
-			<%=f.label "Login"%>:
-			<%=f.text_field :login, class: 'form-control',autofocus: ''%>
+		<div class="col-sm-7 col-sm-offset-4">
+			<%=f.label "Email"%>:
+			<%=f.text_field :email, class: 'form-control',autofocus: ''%>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-7 col-sm-offset-3">
+		<div class="col-sm-7 col-sm-offset-4">
 			<%=f.label "Senha"%>:
 			<%=f.password_field :password,class: 'form-control'%>
 		</div>
 	</div><br>
 	<div class="row">
-		<div class="col-sm-5  col-sm-offset-3">
+		<div class="col-sm-5  col-sm-offset-4">
 			<%=f.submit "Acessar", class: 'btn btn-default'%>
 		</div>
 	</div><br>
 		</div>
 		<div class="col-sm-4">
-		<div class="well"><%=radio_button("authentication_log","access_type","1",checked: true)%>ADMINISTRADOR</div>
-<div class="well"><%=radio_button("authentication_log","access_type","2")%>PROFESSOR</div>
-<div class="well"><%=radio_button("authentication_log","access_type","3")%>ALUNO</div>
+		<div class="well col-sm-offset-2"><%=radio_button("authentication_log","access_type","1",checked: true)%> ADMINISTRADOR</div>
+<div class="well col-sm-offset-2"><%=radio_button("authentication_log","access_type","2")%> PROFESSOR</div>
+<div class="well col-sm-offset-2"><%=radio_button("authentication_log","access_type","3")%> ALUNO</div>
 		</div>
 		<%
 		end
 		%>
-</div><br>
-<footer class="footer">
-    <div class="container-fluid"><br>
-       <p class="text-muted">Created by <a href="http://ajatdesenvolvimento.tk" target="_blank">AJAT Desenvolvimento</a></p>
-    </div>
-</footer>
-	
+</div>
+<%=render template: 'homes/_footer'%>
 </body>
 </html>

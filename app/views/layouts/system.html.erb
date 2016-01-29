@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Paradygma</title>
+  <title>Koruja</title>
  <!-- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %> -->
   <link rel="stylesheet" href="/assets/bootstrap.css">
+	<link rel="stylesheet" href="/assets/bootstrap.custom.css">
+	<link rel="stylesheet" href="/assets/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/sticky-footer.css">
+	<script type="text/javascript" src="/assets/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/bootstrap.js"></script>
 </head>
 <body>
-
+<%=render template: "homes/_horizontal_menu"%>
 <%= yield%>
-
+<%=render template: 'homes/_footer'%>
 </body>
 </html>
